@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +12,10 @@
     <div class="bg-light d-flex justify-content-center align-items-center p-3 w-50" style="min-height: inherit">
         <div class="border rounded d-flex flex-column justify-content-center align-items-center gap-3 p-3">
             <div class="d-flex flex-column gap-3">
-                <img src="" alt="Foto de um carro">
+            <img src="{%static 'img/carro.webp' %}" alt="Foto de um carro">
                 <h1 class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Bem vindo!</h1>
                 <h4 class="text-center">Insira seus dados para iniciar a sessão</h4>
-                <form action="/" method="POST" class="d-flex flex-column gap-3 justify-content-center align-items-center">
+                <form action="{% url 'login' %}" method="POST" class="d-flex flex-column gap-3 justify-content-center align-items-center">
                     {% csrf_token %}
                     <div>
                         <label for="nome">Nome</label>
