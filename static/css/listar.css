@@ -32,3 +32,10 @@ h1 {
     background-color: #0056b3;
     color: #fff;
 }
+.custom-btn-logout {
+    color: rgb(205, 34, 34);
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
