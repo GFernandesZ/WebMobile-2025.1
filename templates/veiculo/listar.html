@@ -21,7 +21,7 @@
             <div class="col">
                 <div class="card h-100">
                     {% if veiculo.foto %}
-                    <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="Foto do veículo">
+                    <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="Foto do veículo sem placeholder">
                     {% else %}
                     <img src="{% static 'img/carro.png' %}" class="card-img-top" alt="Sem foto">
                     {% endif %}

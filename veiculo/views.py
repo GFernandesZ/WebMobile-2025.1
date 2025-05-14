@@ -23,7 +23,11 @@ class FotoVeiculo(View):
 
     def get(self, request, arquivo):
         try:
-            veiculo = Veiculo.objects.get(foto='veiculos/fotos/{}'.format(arquivo)),
+            veiculo = Veiculo.objects.filter(foto='veiculo/fotos/{}'.format(arquivo)).first()
+            # veiculo = veiculo.first()
+
+            print(veiculo)
+
             return FileResponse(veiculo.foto)
         except ObjectDoesNotExist:
             raise Http404('Fotos não encontradas ou acesso não autorizado')
