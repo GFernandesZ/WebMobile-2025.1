@@ -5,5 +5,7 @@ urlpatterns = [
     path('', ListarVeiculo.as_view(), name="listar-veiculo"),
     path('novo/', CriarVeiculo.as_view(), name="criar-veiculo"),
     path('fotos/<str:arquivo>/', FotoVeiculo.as_view(), name="foto-veiculo"),
-    #Em  str:arquivo, str pode ser substituido por id, por maior segurança
+    #Em str:arquivo, str pode ser substituido por id, por maior segurança
+    path('<int:pk>/', EditarVeiculos.as_view(), name="editar-veiculo"),
+    path('deletar/<int:pk>/', DeletarVeiculos.as_view(), name="deletar-veiculo"),
 ]

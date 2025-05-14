@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<title>Deletar Veículo</title>
+
+<form action="/veiculo/deletar/{{object.pk}}/" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <center>
+        <div class=" alert alert-danger" role="alert">
+            <h2>Você tem certeza que deseja excluir o veículo {{object.get_marca_display}} {{object.modelo}}?</h2>
+            <p>Essa ação não pode ser desfeita.</p>
+            <input type="submit" value="Confirmar" class="btn btn-danger">
+        </div>
+    </center>
+</form>
+
+{% endblock %}

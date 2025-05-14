@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>Editar Veículo</title>
+</head>
+
+<body class="bg-light" style="min-height: 100vh;">
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card shadow-lg p-4 border-0" style="max-width: 500px; width: 100%;">
+            <div class="text-center mb-4">
+                <img src="{% static 'img/carro1.png' %}" alt="Foto de um carro" class="img-fluid rounded"
+                    style="max-height: 150px;">
+            </div>
+            <h2 class="text-center mb-3 text-danger" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Editar
+                de Veículo</h2>
+
+            <form action="/veiculo/{{ object.pk }}/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="marca" class="form-label">Marca</label>
+                    {{ form.marca }}
+                </div>
+                <div class="mb-3">
+                    <label for="modelo" class="form-label">Modelo</label>
+                    {{ form.modelo }}
+                </div>
+                <div class="mb-3">
+                    <label for="ano" class="form-label">Ano</label>
+                    {{ form.ano }}
+                </div>
+                <div class="mb-3">
+                    <label for="Combustível" class="form-label">Combustível</label>
+                    {{ form.combustivel }}
+                </div>
+                <div class="mb-3">
+                    <label for="cor" class="form-label">Cor</label>
+                    {{ form.cor }}
+                </div>
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto</label>
+                    {{ form.foto }}
+                    {% if mensagem %}
+                    <div class="text-danger mb-3">{{ mensagem }}</div>
+                    {% endif %}
+                    <button type="submit" class="custom-btn w-100">Cadastrar Veículo</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}
