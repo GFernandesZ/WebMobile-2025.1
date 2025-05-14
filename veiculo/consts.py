@@ -18,8 +18,8 @@ OPCOES_COMBUSTIVEIS = (
 )
 
 OPCOES_CORES = (
-    (1, ''),
-    (2, 'CHEVROLET - GM'),
+    (1, 'AMARELO'),
+    (2, 'BRANCO'),
     (3, 'AZUL'),
     (4, 'PRATA'),
     (5, 'PRETO'),
