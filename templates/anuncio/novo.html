@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<title>Cadastro de Anuncio</title>
+<title>{% block title %}Criar novo anúncio{% endblock %}</title>
 </head>
 
 <body class="bg-light" style="min-height: 100vh;">
@@ -19,15 +19,14 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="veiculo" class="form-label">Veiculo</label>
-                    {{ form.anuncio.veiculo.modelo }}
-                    {{ form.anuncio.veiculo.marca }}
+                    {{ form.veiculo }}
                 </div>
                 <div class="mb-3">
-                    <label for="marca" class="form-label">Marca</label>
+                    <label for="marca" class="form-label">Titulo</label>
                     {{ form.titulo }}
                 </div>
                 <div class="mb-3">
-                    <label for="modelo" class="form-label">Modelo</label>
+                    <label for="modelo" class="form-label">Descrição</label>
                     {{ form.descricao }}
                 </div>
                 <div class="mb-3">

@@ -2,48 +2,58 @@
 {% load static %}
 
 {% block content %}
+<title>{% block title %}Veiculos{% endblock %}</title>
 <body>
-    <div class="container">
-        <!-- Botões no topo -->
-        <div class="d-flex justify-content-start gap-2 mb-4">
-            <a href="#" class="btn custom-btn">Listar Veículos</a>
-            <a href="/veiculo/novo" class="btn custom-btn">Cadastrar veículo</a>
-            <a href="{% url 'listar-anuncio' %}" class="btn custom-btn">Anúncios</a>
-            <a href="/logout" class="btn custom-btn"">Sair</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm py-2 w-100" style="margin-top: -50px;">
+        <div class="container">
+        <div class="navbar-nav gap-3">
+            <a href="{% url 'listar-veiculo' %}" class="btn btn-light text-danger btn-sm rounded-pill px-3">Listar Veículos</a>
+            <a href="/veiculo/novo" class="btn btn-light text-danger btn-sm rounded-pill px-3">Cadastrar veículo</a>
+            <a href="{% url 'listar-anuncio' %}" class="btn btn-light text-danger btn-sm rounded-pill px-3">Anúncios</a>
         </div>
+        <div class="ms-auto">
+            <a href="/logout" class="btn btn-light text-danger btn-sm rounded-pill px-3">Sair</a>
+        </div>
+        </div>
+        
+    </nav>
+    
+    <div class="container">
+        <p></p>
 
-        <h1 class="text-center mb-4">Listagem de Veículos</h1>
-        <p class="text-end">Total: <strong>{{ veiculo|length }}</strong> veículo(s)</p>
+            <h1 class="text-center mb-4">Veículos</h1>
+            <p class="text-end">Total: <strong>{{ veiculo|length }}</strong> veículo(s)</p>
 
-        <!-- Grid de cards -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for veiculo in veiculo %}
-            <div class="col">
-                <div class="card h-100">
-                    {% if veiculo.foto %}
-                    <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="Foto do veículo sem placeholder">
-                    {% else %}
-                    <img src="{% static 'img/carro.png' %}" class="card-img-top" alt="Sem foto">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ veiculo.get_marca_display }} - {{ veiculo.modelo }}</h5>
-                        <p class="card-text">
-                            <strong>Ano:</strong> {{ veiculo.ano }}<br>
-                            <strong>Cor:</strong> {{ veiculo.get_cor_display }}<br>
-                            <strong>Combustível:</strong> {{ veiculo.get_combustivel_display }}
-                        </p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <a href="{{veiculo.id}}" class=""btn btn-warning btn-sm>Editar</a>
-                        <a href="deletar/{{veiculo.id}}" class=""btn btn-warning btn-sm>Excluir</a>
+            <!-- Grid de cards -->
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for veiculo in veiculo %}
+                <div class="col">
+                    <div class="card h-100">
+                        {% if veiculo.foto %}
+                        <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="Foto do veículo sem placeholder">
+                        {% else %}
+                        <img src="{% static 'img/carro.png' %}" class="card-img-top" alt="Sem foto">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ veiculo.get_marca_display }} - {{ veiculo.modelo }}</h5>
+                            <p class="card-text">
+                                <strong>Ano:</strong> {{ veiculo.ano }}<br>
+                                <strong>Cor:</strong> {{ veiculo.get_cor_display }}<br>
+                                <strong>Combustível:</strong> {{ veiculo.get_combustivel_display }}
+                            </p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a href="{{veiculo.id}}" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="deletar/{{veiculo.id}}" class="btn btn-danger btn-sm">Excluir</a>
+                        </div>
                     </div>
                 </div>
+                {% empty %}
+                <div class="col">
+                    <p class="text-center">Nenhum veículo encontrado.</p>
+                </div>
+                {% endfor %}
             </div>
-            {% empty %}
-            <div class="col">
-                <p class="text-center">Nenhum veículo encontrado.</p>
-            </div>
-            {% endfor %}
         </div>
     </div>
 

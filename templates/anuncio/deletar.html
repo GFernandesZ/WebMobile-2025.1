@@ -2,16 +2,15 @@
 {% load static %}
 {% block content %}
 
+<title>{% block title %}Deletar Anúncio{% endblock %}</title>
 
-<title>Deletar Veículo</title>
-
-<form action="/veiculo/deletar/{{object.pk}}/" method="post" enctype="multipart/form-data">
+<form action="/anuncio/deletar/{{object.pk}}/" method="post">
 
     {% csrf_token %}
 
     <center>
         <div class=" alert alert-danger" role="alert">
-            <h2>Você tem certeza que deseja excluir o veículo {{object.get_marca_display}} {{object.modelo}}?</h2>
+            <h2>Você tem certeza que deseja excluir o anuncio {{object.titulo}}?</h2>
             <p>Essa ação não pode ser desfeita.</p>
             <input type="submit" value="Confirmar" class="btn btn-danger">
         </div>

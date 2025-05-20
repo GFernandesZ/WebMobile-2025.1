@@ -9,13 +9,13 @@ from django.http import FileResponse, Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class ListarAnuncio(ListView, LoginRequiredMixin):
+class ListarAnuncio(LoginRequiredMixin, ListView):
     model = Anuncio
     context_object_name = 'anuncio'
     template_name = 'anuncio/listar.html'
 
 
-class CriarAnuncio(CreateView, LoginRequiredMixin):
+class CriarAnuncio(LoginRequiredMixin, CreateView):
     model = Anuncio
     form_class = FormularioAnuncio
     template_name = 'anuncio/novo.html'
@@ -39,7 +39,7 @@ class FotoAnuncio(View):
 class EditarAnuncio(LoginRequiredMixin, UpdateView):
     model = Anuncio
     form_class = FormularioAnuncio
-    template_name = 'veiculo/editar.html'
+    template_name = 'anuncio/editar.html'
     success_url = reverse_lazy('listar-anuncio')
 
 

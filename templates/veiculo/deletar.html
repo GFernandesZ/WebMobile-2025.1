@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<title>Deletar Veículo</title>
+<title>{% block title %}Deletar Anúncio{% endblock %}</title>
 
 <form action="/veiculo/deletar/{{object.pk}}/" method="post" enctype="multipart/form-data">
 
