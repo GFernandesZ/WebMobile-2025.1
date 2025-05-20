@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<title>Cadastro de Veiculo</title>
+<title>Cadastro de Anuncio</title>
 </head>
 
 <body class="bg-light" style="min-height: 100vh;">
@@ -13,37 +13,31 @@
                     style="max-height: 150px;">
             </div>
             <h2 class="text-center mb-3 text-danger" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Cadastro
-                de Veiculo</h2>
+                de Anuncio</h2>
                 
-            <form action="/veiculo/novo/" method="POST" enctype="multipart/form-data">
+            <form action="/anuncio/novo/" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-3">
+                    <label for="veiculo" class="form-label">Veiculo</label>
+                    {{ form.anuncio.veiculo.modelo }}
+                    {{ form.anuncio.veiculo.marca }}
+                </div>
+                <div class="mb-3">
                     <label for="marca" class="form-label">Marca</label>
-                    {{ form.marca }}
+                    {{ form.titulo }}
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Modelo</label>
-                    {{ form.modelo }}
+                    {{ form.descricao }}
                 </div>
                 <div class="mb-3">
-                    <label for="ano" class="form-label">Ano</label>
-                    {{ form.ano }}
+                    <label for="ano" class="form-label">Preço</label>
+                    {{ form.preco }}
                 </div>
-                <div class="mb-3">
-                    <label for="Combustível" class="form-label">Combustível</label>
-                    {{ form.combustivel }}
-                </div>
-                <div class="mb-3">
-                    <label for="cor" class="form-label">Cor</label>
-                    {{ form.cor }}
-                </div>
-                <div class="mb-3">
-                    <label for="foto" class="form-label">Foto</label>
-                    {{ form.foto }}
                 {% if mensagem %}
                 <div class="text-danger mb-3">{{ mensagem }}</div>
                 {% endif %}
-                <button type="submit" class="custom-btn w-100">Cadastrar Veículo</button>
+                <button type="submit" class="custom-btn w-100">Cadastrar Anúncio</button>
             </form>
         </div>
     </div>

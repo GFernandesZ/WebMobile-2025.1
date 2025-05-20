@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<title>Cadastro de Veiculo</title>
+<title>Editar Veículo</title>
 </head>
 
 <body class="bg-light" style="min-height: 100vh;">
@@ -12,10 +12,10 @@
                 <img src="{% static 'img/carro1.png' %}" alt="Foto de um carro" class="img-fluid rounded"
                     style="max-height: 150px;">
             </div>
-            <h2 class="text-center mb-3 text-danger" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Cadastro
-                de Veiculo</h2>
-                
-            <form action="/veiculo/novo/" method="POST" enctype="multipart/form-data">
+            <h2 class="text-center mb-3 text-danger" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Editar
+                de Veículo</h2>
+
+            <form action="/veiculo/{{ object.pk }}/" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="marca" class="form-label">Marca</label>
@@ -40,10 +40,10 @@
                 <div class="mb-3">
                     <label for="foto" class="form-label">Foto</label>
                     {{ form.foto }}
-                {% if mensagem %}
-                <div class="text-danger mb-3">{{ mensagem }}</div>
-                {% endif %}
-                <button type="submit" class="custom-btn w-100">Cadastrar Veículo</button>
+                    {% if mensagem %}
+                    <div class="text-danger mb-3">{{ mensagem }}</div>
+                    {% endif %}
+                    <button type="submit" class="custom-btn w-100">Cadastrar Veículo</button>
             </form>
         </div>
     </div>
