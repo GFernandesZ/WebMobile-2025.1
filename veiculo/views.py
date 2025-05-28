@@ -7,6 +7,10 @@ from veiculo.models import Veiculo
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import FileResponse, Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework.generics import ListAPIView 
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import permissions as permission
+from veiculo.serializers import SerializadorVeiculos
 
 
 class ListarVeiculo(ListView, LoginRequiredMixin):
@@ -48,3 +52,12 @@ class DeletarVeiculos(LoginRequiredMixin, DeleteView):
     model = Veiculo
     template_name = 'veiculo/deletar.html'
     success_url = reverse_lazy('listar-veiculo')
+
+class APIListarVeiculos(ListAPIView):
+    serializer_class = SerializadorVeiculos
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permission.IsAuthenticated]
+
+    def get_queryset(self):
+        return Veiculo.objects.all()
+
