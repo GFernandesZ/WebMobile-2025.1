@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:pk>/', EditarVeiculos.as_view(), name="editar-veiculo"),
     path('api/', APIListarVeiculos.as_view(), name="api-listar-veiculo"),
     path('deletar/<int:pk>/', DeletarVeiculos.as_view(), name="deletar-veiculo"),
+    path('api/deletar/<int:pk>', DeleteAPIVeiculo.as_view(), name="api-listar-anuncio"),
 ]
